@@ -5,12 +5,10 @@ import com.example.carprice.entity.User;
 import com.example.carprice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -30,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    // метод не удаляет полностью пользователя из базы даннных, а просто скрывает его.
     public void deleteById(Long id) {
         Optional<User> userOptional = usersRepository.findById(id);
         if (userOptional.isEmpty()) {
@@ -44,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void saveUser(User user) {
-        usersRepository.save(user);
+    usersRepository.save(user);
     }
 }
 
