@@ -3,7 +3,7 @@ package com.example.carprice.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import java.util.Date;
 @Entity
@@ -11,6 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+
+@Where(clause = "is_deleted is null") //показывает только тех пользователей, которые не удалены.
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +24,6 @@ public class User {
     private Integer moneyAmount;
     @Column(name = "is_deleted")
     private Date isDeleted;
+    @Column(name = "car_num")
+    private String crNumber;
 }
